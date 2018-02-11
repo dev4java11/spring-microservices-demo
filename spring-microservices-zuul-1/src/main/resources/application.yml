@@ -1,0 +1,33 @@
+#zuul:
+#  routes:
+#    simple1:
+#      path: /simple1/**
+#      url: http://localhost:8081/message/
+#      service-id: simple1
+      
+#simple1:
+#  ribbon:
+#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+#    ListOfServers: http://localhost:8000,http://localhost:9000
+#    ConnectTimeout: 1000
+#    ReadTimeout: 3000
+#    MaxTotalHttpConnections: 500
+#    MaxConnectionsPerHost: 100
+
+server:
+  port: 8050
+
+spring:
+  application:
+    name: zuul1
+
+zuul:
+  routes:
+    users:
+      path: /users/*
+      serviceId: users
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka,http://localhost:9000/eureka
